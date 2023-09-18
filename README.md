@@ -1,3 +1,5 @@
+Big thanks to Jim Shultz for his [amazing guide](https://www.youtube.com/watch?v=aqA6bktFHoY&ab_channel=JimSchultz). Great channel with not enough recognition!
+
 As per Microsoft, "A directory is a hierarchical structure that stores information about objects on the network. A directory service, such as Active Directory Domain Services (AD DS), provides the methods for storing directory data and making this data 
 available to network users and administrators. For example, AD DS stores information about user accounts, such as names, passwords, phone numbers, and so on, and enables other authorized users on the same network to access this information."
 
@@ -12,7 +14,9 @@ Once downloaded you should verify the files integrity.
 In Virtualbox, we will then click on File, hover Tools, and click Network Manager. Click on the NAT Networks tab and then create while naming it something you will remember, default settings are fine for home lab purposes but may need to be 
 tailored to specific company requirements in a production setting. Creating this network will allow the server to connect with the Windows 11 client.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/2c1eaf58-3057-4e1d-b05c-b411efe45904)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/7af95e6f-37cb-423f-a474-cfac9590ce43)
+
+
 
 Now, go to the Machine tab and click on New, to create a new Virtual Machine. 
 The name of the VM should relate to the function it is performing. Here we will start with the Windows Server 2022. 
@@ -22,7 +26,9 @@ In the ISO Image section, click the dropdown and go to Other and navigate to whe
 The Edition dropdown is now selectable and choose either the Standard or Datacenter Evaluation but be sure to select one that is a Desktop Experience.
 Then click Skip Unattended Installation, and Next.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/abf15db8-4292-43c5-bbed-a2f4f03272b8)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/85ec714e-17b3-4faf-a777-eef6de4d20b6)
+
+
 
 Depending on the host machine hardware the settings here will vary.
 I recommend at least 12GB of RAM (Base Memory) and 4 Processors, anything less will increase wait times and can lead to crashing issues. But for home lab purposes we are just looking to get the machines up and running. 
@@ -38,7 +44,7 @@ Click Install Now and again select one of the two Desktop Experience options, I 
 Next, accept the terms and press next. We will be doing a custom install and installing the server to the premade drive that should be allocated about 50GB. 
 From here loading it up is dependant on the specs given but should take about 5-10 minutes. 
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/0a66cbc7-4177-4edc-8550-65c8daaaca62)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/b9571877-80ec-4585-802c-291717761a4e)
 
 Once that machine has rebooted, you will create the Admin account. For home labs purposes the password will still need to follow the guidelines but it can be something easily remembered. 
 Click next and from there you may need to press the Input tab, hover Keyboard and press the CRTL + ALT + DELETE option. Enter the Admin password you just made.
@@ -58,15 +64,17 @@ Select it and hit properties once again.
 Leaving that tab open, in the search bar below, type cmd to open the command prompt.
 In the command prompt, type ```ipconfig```.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/bc396fdf-246b-40b7-bc5c-f63fa6101656)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/c4144f05-cfb2-42f5-a17f-1e36dab88e53)
+
 
 With that command prompt still open, go back to the IPv4 tab and click Use the following IP address. 
 In here we will enter the information found in the IP config command. Copy over the IPv4 address, subnet mask, and default gateway. 
 
-Now, in the perferred DNS we will use the loopback address of 127.0.0.1 and then a public DNS such as Google's 8.8.8.8
+Now, in the perferred DNS we will use the loopback address of 127.0.0.1 and then a public DNS such as Google's 8.8.8.8.
 Remember these configurations are different for each machine so do not copy the IP addressing from the picture below but the information given in your ipconfig. 
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/f4dc1927-d64b-44d7-a51a-bcf099d7658d)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/fa674493-3cfd-4057-a736-96741b313670)
+
 
 That is all set now and the beginner of the server setup has been finished. So we will go and reboot this machine. 
 
@@ -85,14 +93,15 @@ Click next, on the DNS options. Addional options are fine as the default locatio
 In paths, the defaults are ok. Click next on Review Options again. And in Installation click Install as long as there are no errors, warnings are ok.
 Once finished the server will then restart.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/c9eb5126-45ab-49c8-b62a-1b96642c5db8)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/118c0e68-6e9d-44a2-90cc-af59dd3ec6b0)
 
 Notice the new username as it is now attached to the domain we previously created. Log in as normal. Reopen a command prompt and check the ipconfig but this time with a /all suffix.
 ```ipconfig /all```
 As long as it is the same as previously created with the 127.0.0.1 and 8.8.8.8 DNS servers we can continue. You can see in the screenshot below, the public DNS I added was removed.
-We will just readd it the same was as done originally.
+We will just re-add it the same was as done originally.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/5cc8d5d1-baeb-4d45-97fa-1347d9b4f29c)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/ece7d949-c99a-41c2-a59c-b7b5f61d8fe6)
+
 
 The domain controller is now functional and we are ready to set up the Windows 11 VM.
 
@@ -105,7 +114,8 @@ For mine I will choose Windows Pro Education but Windows Pro works fine as well.
 And we will also be doing a Custom Install for this. Select the drive and press next.
 Again, this installation depends on the resources allocated and host system. It should take about 5-10 minutes.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/14f8fefa-12c7-4ad8-a0f5-d7618e6200f3)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/63c81b53-5371-45f3-9deb-22cdbae70901)
+
 
 Once the Windows 11 machine has been restarted, go through the basic configuration settings on a personalized basis.
 The VM will automatically restart after it has checked for updates. We can now rename the device, for home lab purposes its best if it is something simple such as PC-1 or name it the same as the VM name in Virtualbox.
@@ -123,14 +133,16 @@ For this we will be using the IP address of the server we created earlier.
 Below, on the left is the Server and the right is the Windows 11 machine with updated DNS addresses. One resolves to the Server we created and the other to a public DNS.
 We should now attempt to ping the server from the Windows machine to ensure the DNS is set up properly. This is used with the ```ping``` command and the domain name that was set up on the server.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/16d77ed7-7984-4322-9430-c8c95e43f479)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/b16c84e7-d2f6-4966-bac6-0c3cf4c9d124)
+
 
 If you get a response, this means it is properly set up and you can continue. Otherwise recheck the dns settings you have set up.
 On the Windows machine, in the search bar, type domain and click on Access work or school.
 In the Add a work or school account click the blue Connect button. Then click Join this device to a local Active Directory domain.
 Type in the domain you created earlier.
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/a6bd8c5a-6fb9-4638-8e06-de271a7108ee)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/47869016-d3c9-4565-8398-9460f38c4d58)
+
 
 Press next, and then sign in with Administrator as the username and then the password for the admin account. 
 The next screen that is displayed is to create a new account to be used on the domain, select administrator under Account type, and restart the PC.
@@ -141,7 +153,8 @@ You have now completed the basic setup of an Active Directory home lab.
 If you want, you may go on the server pc and search for Active Directory Users and Computers. In here you can create and manage new users, manage connected PCs and more.
 In the next write up this is what we will go over. 
 
-![image](https://github.com/JMacPort/Active-Directory/assets/145376972/e9aa8009-6e97-4732-a6fb-56b88e8f63bf)
+![image](https://github.com/JMacPort/Active-Directory/assets/145376972/73d21f61-b0bd-4676-aca0-1af5c7d38ed4)
+
 
 
 
