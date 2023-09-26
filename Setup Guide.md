@@ -155,7 +155,11 @@ In the next write up this is what we will go over.
 
 ![image](https://github.com/JMacPort/Active-Directory/assets/145376972/73d21f61-b0bd-4676-aca0-1af5c7d38ed4)
 
+Update: Since completing this setup, I have repeated this process many times. Experimenting with host resources, different roles and features such as Remote Access and DHCP, and overall
+just getting comfortable with the process. This tutorial/guide was meant to serve as my base learning experience but I am also constantly building on it in the background. Most likely, 
+this will not be updated again unless something major changes, but I am still working on understanding the layout and overall experience. 
 
+Thanks for following along.
 
 
 
