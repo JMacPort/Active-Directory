@@ -31,12 +31,12 @@ Then click Skip Unattended Installation, and Next.
 
 
 Depending on the host machine hardware the settings here will vary.
-I recommend at least 12GB of RAM (Base Memory) and 4 Processors, anything less will increase wait times and can lead to crashing issues. But for home lab purposes we are just looking to get the machines up and running. 
+I recommend at least 2-4GB of RAM (Base Memory) and 1-2 Processors, anything less will increase wait times and can lead to crashing issues. But for home lab purposes we are just looking to get the machines up and running. 
 Press next and Create a Virtual Hard Disk Now, 50GB default option is fine, click next and Finish.
 
 Once finished, right click on the newly created VM and go to settings. Here you will go to Network and in the Attched to drop down, select NAT Network and the Name dropdown should select the newly created one. 
 
-To create the Windows 11 machine we will follow the same process as above with the only major difference being which iso is selected in the initial configuration screen. 
+To create the Windows 11 machine we will follow the same process as above with the only major differences being which iso is selected in the initial configuration screen, and adding additional processors(4 should be good)/RAM(the more the smoother the process). 
 
 We will begin the setup process with  Windows Server VM first, so right click that machine and press start.
 Once the VM has booted you will see a screen titled Microsoft Server Operating System Setup. And if you are okay with the languages being English press next, otherwise change to desired language and continue. 
