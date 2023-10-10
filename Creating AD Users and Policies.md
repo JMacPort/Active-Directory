@@ -1,5 +1,5 @@
 Update: There are many Powershell scripts online that will create a user based on a given formatted list. ie. Firstname Lastname. It will use each name and create an account based on the given attributes. I chose to do it manually as 1. I don't know any Powershell
-scripting, 2. Since I can't make it myself and it would be directly copied I would rather not include it in my tutorial. A script would most likely be used in a production environment unless maybe only one user 
+scripting, 2. Since I can't make it myself and it would be directly copied I would rather not include it in my tutorial. A script would most likely be used in a production environment unless only one or so user 
 were to be created but for this tutorial it wasn't necessary. 
 
 Now we can begin creating and managing users, groups and more within Active Directory. 
